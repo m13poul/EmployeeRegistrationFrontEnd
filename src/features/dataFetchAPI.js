@@ -3,12 +3,15 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const EmployeesAPI = createApi({
   reducerPath: "employeesAPI",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/TcYU5yzUteW0y6ek4vSohb4EC8p2",
+    baseUrl: `${import.meta.env.VITE_BACKEND_HOST}/${
+      import.meta.env.VITE_API_KEY
+    }`,
   }),
   keepUnusedDataFor: 30,
   endpoints: (builder) => ({
     getAllEmployeesFromDatabase: builder.query({
-      query: () => `http://localhost:3001/TcYU5yzUteW0y6ek4vSohb4EC8p2`,
+      query: () =>
+        `${import.meta.env.VITE_BACKEND_HOST}/${import.meta.env.VITE_API_KEY}`,
     }),
   }),
 });
