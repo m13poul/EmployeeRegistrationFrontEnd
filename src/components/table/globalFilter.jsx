@@ -9,11 +9,11 @@ function GlobalFilter({ filter, setFilter }) {
         <input
           value={filter || ""}
           onChange={(e) => setFilter(e.target.value)}
-          className="border-0 border-b-2 border-black bg-[#E1EFFF] outline-none placeholder:bg-[#E1EFFF]"
+          className="border-0 border-b-2 border-black bg-primary dark:bg-secondary dark:placeholder-primary outline-none dark:placeholder:bg-secondary dark:border-white"
           placeholder="Search for anything"
         />
       </div>
-      <div className="border-0 border-b-2 border-black">
+      <div className="border-0 border-b-2 border-black dark:border-white">
         <IconContext.Provider value={{ style: { fontSize: "47px" } }}>
           <GiArchiveResearch />
         </IconContext.Provider>

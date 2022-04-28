@@ -7,7 +7,9 @@ import { capitalizeFirstLetter } from "../../dataUtils";
 import { Link } from "react-router-dom";
 import { MdForward } from "react-icons/md";
 import { handleStatusCode } from "../features/registrationSlice";
-
+import { MdDarkMode } from "react-icons/md"
+import { useSelector } from "react-redux";
+import ThemeToggle from "./themeToggle";
 
 // This is the initial state for our form. We declare it outside the component in order to avoid calling in many times.
 const INITIAL_STATE = {
@@ -21,7 +23,6 @@ const INITIAL_STATE = {
 function Form() {
   // This out local state. In here we temporarily save the user data before we send them to the server. We could also do this using a class component. However, functional components are more convinient and the whole react community has moved towards functional components. It's a matter of taste I guess.
   const [formData, setFormData] = useState(INITIAL_STATE);
-
   // This hook returns a reference to the dispatch function from the store. We will need latern in order to dispatch actions as needed.
   const dispatch = useDispatch();
   // This hook returns a function which we will need later on, to navigate programmatically
@@ -64,16 +65,22 @@ function Form() {
     // Finally we redirect to the confirmation page
     navigate("/confirmation");
   };
+
   return (
 
     <div>
-      <h2 className="formTitle">
-        Employee Registration Form
-      </h2>
+      <div>
+      </div>
+      <div className="formTitle flex items-center justify-center gap-x-2">
+        <p>Employee Registration Form</p>
+        <button>
+          <ThemeToggle />
+        </button>
+      </div>
       {/* {formData.isCorrect ? null : <p>Please complete all the fields</p>} */}
       <div className="mt-8">
         <form onSubmit={handleFormSubmission}>
-          <div className="formGrid">
+          <div className={`formGrid`}>
             <label className="block">
               <div className="formNameGrid">
                 <span className="formFieldText">First Name</span>
@@ -98,20 +105,18 @@ function Form() {
                 <option>Prefer not to disclose</option>
               </select>
             </label>
-            <button type="submit" className="mt-6 formButtonBasic buttonMainAnimation"> Submit </button>
-            <div className="text-center">OR</div>
+            <button type="submit" className="formButtonBasic mt-6 buttonMainAnimation"> Submit </button>
+            <div className="text-center dark:text-white">OR</div>
             <Link to="/administration">
-              <button className="group flex w-full items-center justify-center gap-x-4 formButtonBasic buttonMainAnimation">
+              <button className="formButtonBasic group flex w-full items-center justify-center gap-x-4 buttonMainAnimation">
                 <p>Go to administration portal</p>
-                <MdForward className=" duration-500 group-hover:translate-x-6" />
+                <MdForward className="duration-500 group-hover:translate-x-6" />
               </button>
             </Link>
           </div>
         </form>
       </div>
     </div>
-
-
   );
 }
 

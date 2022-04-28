@@ -5,8 +5,8 @@ function ErrorMessage() {
 
   const navigate = useNavigate()
   return (
-    <div className='bg-primary'>
-      <div className="text-center my-8">
+    <div className=''>
+      <div className="text-center my-8 dark:text-white">
         <p>Something went wrong, please try again later.</p><br />
         <p>We hope to solve the problem as soon as possible.</p>
       </div>

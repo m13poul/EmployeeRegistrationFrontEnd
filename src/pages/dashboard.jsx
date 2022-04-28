@@ -16,6 +16,7 @@ import { useGetAllEmployeesFromDatabaseQuery } from "../features/dataFetchAPI.js
 import ConfirmDelete from "../components/confirmDeletePopup.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import ErrorMessage from "../components/errorMessage.jsx";
+import useTheme from "../Hooks/useTheme.js";
 
 
 
@@ -43,7 +44,7 @@ function Dashboard({ }) {
   const [deleteWarning, setDeleteWarning] = useState({ show: false });
   const [showEdit, setShowEdit] = useState({ show: false });
   const [employees, setEmployees] = useState([]);
-
+  const { changeTheme } = useTheme()
   const navigate = useNavigate();
 
   const { data: allEmployees, error, isFetching } = useGetAllEmployeesFromDatabaseQuery()
@@ -172,10 +173,15 @@ function Dashboard({ }) {
     <>
       <AnimatePresence>
         <motion.div initial={{ opacity: 0, y: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }} >
-          <div className="h-screen overflow-y-scroll bg-[#E1EFFF]">
-            <div className="container mx-auto grid grid-cols-12 justify-items-start bg-[#E1EFFF] font-lora text-secondary">
+          <div className="h-screen overflow-y-scroll bg-primary dark:bg-secondary">
+            <div className="container mx-auto grid grid-cols-12 justify-items-start bg-primary font-lora text-secondary dark:bg-secondary dark:text-white">
               <div className="mt-12 px-4  text-center">
                 <div className="text-3xl">Internal Dashboard</div>
+                <button
+                  onClick={() => changeTheme()}
+                  className="my-12 flex  items-center  rounded-md bg-[#FF9E43] p-2 text-xl transition duration-500 hover:-translate-y-2 hover:bg-[#FC7A00]">
+                  Switch Theme
+                </button>
                 <button
                   className="my-12 flex  items-center  rounded-md bg-[#FF9E43] p-2 text-xl transition duration-500 hover:-translate-y-2 hover:bg-[#FC7A00]"
                   onClick={() => exportAllEmployeesToPDF(employees)}
@@ -207,8 +213,8 @@ function Dashboard({ }) {
                   </div>
                 </button>
               </div>
-              <div className="col-span-10 col-start-3 w-full">
-                <div className="my-12 text-center text-3xl font-semibold text-secondary">
+              <div className="col-span-10 col-start-3 w-full px-12">
+                <div className="my-12 text-center text-3xl font-semibold text-secondary dark:text-white">
                   There are currently {employees?.length} employees registered
                 </div>
                 <div className="my-6 flex items-center justify-center gap-x-4">
@@ -326,7 +332,7 @@ function Dashboard({ }) {
                           return (
                             <tr
                               {...row.getRowProps}
-                              className="border-b bg-white  hover:bg-gray-200"
+                              className="border-b bg-white  hover:bg-gray-200 dark:bg-secondary dark:text-white dark:hover:bg-gray-800"
                               key={uuidv4()}
                             >
                               {row.cells.map((cell) => (
@@ -379,7 +385,7 @@ function Dashboard({ }) {
 
 
 
-                <div className="pagination mb-12 text-secondary">
+                <div className="pagination mb-12 text-secondary dark:text-white">
                   <div className="mt-4 flex items-center justify-center">
                     <IconContext.Provider
                       value={{ style: { fontSize: "30px" } }}

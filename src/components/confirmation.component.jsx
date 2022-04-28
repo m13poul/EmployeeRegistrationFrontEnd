@@ -23,7 +23,7 @@ function ConfirmationComp() {
   return (
     // Nothing fancy Headers, just some markup
     <div
-      className="mx-auto  box-border min-w-full overflow-hidden  rounded-r-md border border-b-4  border-secondary shadow-xl"
+      className="mx-auto  box-border min-w-full overflow-hidden  rounded-r-md border border-b-4  border-secondary shadow-xl dark:text-white"
       ref={toPrintRef}
     >
       <div className="svgDivStyle">

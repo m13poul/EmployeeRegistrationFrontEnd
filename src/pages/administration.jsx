@@ -63,14 +63,14 @@ function DashboardLogin() {
       <motion.div initial={{ opacity: 0, y: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 1 }} >
         <div className="administratorLoginPageWrapper">
           <div className=" mx-auto grid grid-cols-2 justify-items-center">
-            <div className=" h-screen w-full bg-primary"></div>
-            <div className="h-screen w-full bg-primary"></div>
+            <div className=" h-screen w-full bg-primary dark:bg-secondary"></div>
+            <div className="h-screen w-full bg-primary dark:bg-secondary"></div>
           </div>
           <div className="insideWrapper">
             <div className="grid grid-cols-1">
               <div className="mb-12 self-center justify-self-start text-secondary">
-                <h2 className=" mb-4 text-5xl font-semibold">Hello again!</h2>
-                <h3 className="border-r-2 border-tertiary">Welcome Back.</h3>
+                <h2 className=" mb-4 text-5xl font-semibold dark:text-white">Hello again!</h2>
+                <h3 className="border-r-2 border-tertiary dark:text-white">Welcome Back.</h3>
               </div>
               <div className="self-center justify-self-start">
                 <form onSubmit={handleSubmit} className="w-96">
