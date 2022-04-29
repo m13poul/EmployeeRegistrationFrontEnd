@@ -47,6 +47,9 @@ function Form() {
   // This function sends the data the backend, when the user clicks the "Submit" button. It also resets the form fields. It makes a POST request with the appropriate content-type - we need to set this, in order to use the data in the backend. Otherwise Node will not be able to decide what to do with the data.
   const handleFormSubmission = (e) => {
     e.preventDefault();
+    if (!formData.firstName || !formData.lastName || formData.email || formData.Gender) {
+      return;
+    }
     fetch(`${import.meta.env.VITE_BACKEND_HOST}`, {
       method: "POST",
       body: JSON.stringify(formData),
